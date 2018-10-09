@@ -4,6 +4,8 @@ import org.w3c.dom.css.RGBColor;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -51,6 +53,16 @@ public class PixelTest {
                 renderer.drawDda(400, 300, e.getX(), e.getY(), 0x00ffff);
             }
         });
+        canvas.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                System.out.println(e.getKeyCode());
+                if (e.getKeyCode() == KeyEvent.VK_C) {
+                    renderer.clear();
+                }
+            }
+        });
+        canvas.requestFocus();
     }
 
     public static void main(String[] args) {
